@@ -1,0 +1,46 @@
+CODEBUCH,,
+Allgemeines,,
+Merkmal,Beschreibung,
+Netzwerktyp,Two-Mode-Netzwerk (Personen + Organisationen),
+Erhebungszeitraum,2016 bis 2026,
+Quelle,Offizielle Kurzbiografien zur Verleihung des Landesverdienstkreuzes BW 2016 bis 2026,
+Software,"R (igraph, ggraph, tidygraph)",
+Gerichtetheit,Ungerichtet,
+,,
+NODE-LIST,,
+Variablen (alle Knoten),,
+Variable,Beschreibung,Ausprägungen
+ID,Eindeutige Knoten-ID,"Personen: erster Buchstabe Vorname + Nachname (z. B. aakhtar); Organisationen: org_kurzname, bei Dopplungen Ergämzung von Zahlen als Numerierung"
+Typ,Knotentyp,"Person, Organisation"
+Label,Anzeigename im Netzwerk,Text
+Variablen (nur Personen),,
+Variable,Beschreibung,Ausprägungen
+Geschlecht,Geschlecht der Person,"m, w, d"
+Titel,Höchster akademischer oder politischer Titel,"keiner, Dr., Prof. Dr., Minister:in a.D., OB a.D. Dr., Landrat a.D. Dr., Minister a.D., Dr. h.c., Dr. rer. nat. habil., Gräfin, MdB, Parl. Staatssekretär, Dr., Prof., Prof. Dr. Dr. h.c., Prof. Dr. med., Prof. Dr. med. Dr. h.c., Prof. Dr.-Ing., Prof. Dr., Botschafter a.D., Prof. em. Dr. Dr. h.c., Rabbiner, Staatsrätin, Prälat Dr., Dr. Ing. h. c., Dipl.-Ing, Prof. E.h. und Senator E.h. "
+Wohnort,Wohnort laut Trägerliste 2026,Text
+Region_BW,Grobe geografische Einordnung innerhalb BW,"Nord, Süd, Mitte, Ost, West, außerhalb BW"
+Berufsfeld_1,Primäres gesellschaftliches Wirkungsfeld,"Sozialpädagokik, Wissenschaft, Kultur, Kultur/Musik, Kultur/Tanz, Kultur/Museum, Gesundheit, Sport, Landwirtschaft, Infrastruktur, Politik, Recht, Wirtschaft, Zivilgesellschaft/NGO, Medien, Natur/Umwelt, Bildung, NA, keine"
+Berufsfeld_2,"Sekundäres Wirkungsfeld, falls biografisch belegt","Sozialpädagokik, Wissenschaft, Kultur, Kultur/Musik, Kultur/Tanz, Kultur/Museum, Gesundheit, Sport, Landwirtschaft, Infrastruktur, Politik, Recht, Wirtschaft, Zivilgesellschaft/NGO, Medien, Natur/Umwelt, Bildung, NA, keine"
+Engagement_Inklusion,"Explizit belegtes Engagement für Inklusion, Diversität oder Antidiskriminierung","ja, nein"
+Engagement_International,Wirkt nachweislich auf internationaler Ebene,"ja, nein"
+Engagement_Ehrenamt,Relevantes ehrenamtliches Engagement biografisch belegt,"ja, nein"
+Variablen (nur Organisationen),,
+Variable,Beschreibung,Ausprägungen
+Org_Typ,Organisationsform,"Behörde, Forschungseinrichtung, Hilfsorganisation, Bildungseinrichtung, Stiftung, Museum, Verein, Partei, Behörde, Unternehmen, Verband, Medien, Initiative, Hochschule, Hilfsorganisation, NGO, Genossenschaft, Messe, Kultureinrichtung, Gesundheitseinrichtung, Handelskammer, Politik, Film, Diakonie, Beirat/Kommission"
+Org_Ebene,Geografische Reichweite der Organisation,"lokal, regional, national, international"
+Org_Sektor,Thematisches Wirkungsfeld der Organisation,"Wissenschaft, Kultur, Sport, Politik, Wirtschaft, Zivilgesellschaft, Medien, Natur/Umwelt, Landwirtschaft, Religion, Bildung, Infrastruktur, Gesundheit"
+,,
+EDGE-LIST,,
+Variablen (alle Kanten),,
+Variable,Beschreibung,Ausprägungen
+Source,ID des Ausgangsknotens,Text
+Target,ID des Zielknotens,Text
+Rolle,Funktion der Person in der Organisation oder Art der Personenbeziehung,"Gründer/in, Leitung/Geschäftsführung, Vorstand/Präsidium, Mitglied, Beschäftigt/tätig, Botschafter/in, Aufsichtsrat, Dozent/in, Kuratorium, personell, institutionell"
+Beziehungstyp,Strukturelle Art der Kante,"Person-Organisation, Person-Person"
+Gewicht,Stärke und Belegbarkeit der Verbindung,siehe Gewichtungsschema
+Gewichtungsschema (Erläuterung),,
+Gewicht,Bedeutung,Beispiel
+4,Beziehung zwischen Personen nur bei eindeutiger Belegbarkeit,"Eheleute, Gründer-Duo"
+3,"Gründer/in, Geschäftsführung, Inhaber/in",Barth → Agapedia
+2,"Vorstand, Aufsichtsrat, Präsidium",Gönner → VfB
+1,"Mitglied, Botschafter/in, assoziiert",Vogel → Uni Tübingen
