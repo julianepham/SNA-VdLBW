@@ -1,4 +1,4 @@
-Source,Target,Rolle,Beziehungstyp,Gewicht
+from,to,Rolle,Beziehungstyp,Gewicht
 aakhtar,org_mpg,Vorstand/Präsidium,Person-Organisation,2
 mbarth,org_agapedia,Gründer/in,Person-Organisation,3
 sbarth,org_agapedia,Gründer/in,Person-Organisation,3
