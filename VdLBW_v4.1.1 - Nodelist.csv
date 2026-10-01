@@ -799,7 +799,7 @@ org_zentrale_stelle_ludwigsburg,2,Zentrale Stelle der Landesjustizverwaltungen L
 org_landgericht_stuttgart,2,Landgericht Stuttgart,NA,NA,NA,NA,NA,NA,NA,NA,NA,Behoerde,regional,Politik
 org_staatsanwaltschaft_stuttgart,2,Staatsanwaltschaft Stuttgart,NA,NA,NA,NA,NA,NA,NA,NA,NA,Behoerde,regional,Politik
 org_lfs_bw,2,Landesfeuerwehrschule Baden Wuerttemberg,NA,NA,NA,NA,NA,NA,NA,NA,NA,Hilfsorganisation,regional,Zivilgesellschaft
-org_innenministerium_bw,2,Ministerium des Inneren, fuer Digitalisierung und Europa,NA,NA,NA,NA,NA,NA,NA,NA,NA,Behoerde,regional,Politik
+org_innenministerium_bw,2,Ministerium des Inneren fuer Digitalisierung und Europa,NA,NA,NA,NA,NA,NA,NA,NA,NA,Behoerde,regional,Politik
 org_deutsche_bank,2,Deutsche Bank,NA,NA,NA,NA,NA,NA,NA,NA,NA,Unternehmen,international,Wirtschaft
 org_frankfurter_hypothekenbank,2,Frankfurter Hypothekenbank,NA,NA,NA,NA,NA,NA,NA,NA,NA,Unternehmen,national,Wirtschaft
 org_deutsche_anlagen_leasing,2,Deutsche Anlagen Leasing,NA,NA,NA,NA,NA,NA,NA,NA,NA,Unternehmen,national,Wirtschaft
