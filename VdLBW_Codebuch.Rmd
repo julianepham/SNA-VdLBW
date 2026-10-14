@@ -1,0 +1,90 @@
+---
+title: "Codebuch: Netzwerk der Träger:innen des Landesverdienstkreuzes Baden-Württemberg"
+subtitle: "Two-Mode-Netzwerk Personen × Organisationen, 2016 bis 2026"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: false
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(knitr)
+```
+
+# 1 Allgemeines
+
+| Merkmal | Beschreibung |
+|:--|:--|
+| Netzwerktyp | Two-Mode-Netzwerk (Personen + Organisationen) |
+| Erhebungszeitraum | 2016 bis 2026 |
+| Quelle | Offizielle Kurzbiografien zur Verleihung des Landesverdienstkreuzes BW 2016 bis 2026 |
+| Software | R (`igraph`, `ggraph`, `tidygraph`) |
+| Gerichtetheit | ungerichtet |
+| Dateien | `VdLBW_Nodelist.csv`, `VdLBW_Edgelist.csv` |
+
+# 2 Node-List
+
+## 2.1 Variablen (alle Knoten)
+
+| Variable | Beschreibung | Ausprägungen |
+|:--|:--|:--|
+| `ID` | Eindeutige Knoten-ID | Personen: erster Buchstabe des Vornamens + Nachname (z. B. `aakhtar`); Organisationen: `org_kurzname`, bei Dopplungen mit fortlaufender Nummerierung |
+| `Typ` | Knotentyp | Person, Organisation |
+| `Label` | Anzeigename im Netzwerk | Text |
+
+## 2.2 Variablen (nur Personen)
+
+| Variable | Beschreibung | Ausprägungen |
+|:--|:--|:--|
+| `LV_Jahr` | Jahr der Verleihung des Landesverdienstkreuzes | 2016 bis 2026 |
+| `Geschlecht` | Geschlecht der Person | m, w, d |
+| `Titel` | Höchster akademischer oder politischer Titel | Text als Abkürzung (z. B. Dr.), keiner |
+| `Wohnort` | Wohnort laut Trägerliste 2026 | Text |
+| `Landkreis_BW` | Landkreis des Wohnorts in BW | Text |
+| `Region_BW` | Geografische Einordnung des Landkreises innerhalb BW | Nord, Süd, Mitte, Ost, West, außerhalb BW |
+| `Berufsfeld_1` | Primäres gesellschaftliches Wirkungsfeld | siehe Abschnitt 2.3 |
+| `Berufsfeld_2` | Sekundäres Wirkungsfeld, falls biografisch belegt | siehe Abschnitt 2.3 |
+| `Engagement_Inklusion` | Explizit belegtes Engagement für Inklusion, Diversität oder Antidiskriminierung | ja, nein |
+| `Engagement_International` | Wirkt nachweislich auf internationaler Ebene | ja, nein |
+| `Engagement_Ehrenamt` | Relevantes ehrenamtliches Engagement biografisch belegt | ja, nein |
+
+## 2.3 Ausprägungen Berufsfeld (`Berufsfeld_1`, `Berufsfeld_2`)
+
+Bildung, Gesundheit, Infrastruktur, Kultur, Kultur/Literatur, Kultur/Museum, Kultur/Musik, Kultur/Tanz, Kultur/Theater, Landwirtschaft, Medien, Natur/Umwelt, Politik, Recht, Sozialpädagok, Sport, Wirtschaft, Wissenschaft, Zivilgesellschaft/NGO, keine, NA
+
+`keine` = kein Feld belegt (v. a. bei `Berufsfeld_2`); `NA` = nicht anwendbar (Organisationen).
+
+
+##  Variablen (nur Organisationen)
+
+| Variable | Beschreibung | Ausprägungen |
+|:--|:--|:--|
+| `Org_Typ` | Organisationsform | Behörde, Beirat/Kommission, Bildungseinrichtung, Diakonie, Film, Forschungseinrichtung, Genossenschaft, Gesundheitseinrichtung, Handelskammer, Hilfsorganisation, Hochschule, Initiative, Kultureinrichtung, Medien, Messe, Museum, NGO, Partei, Politik, Stiftung, Unternehmen, Verband, Verein |
+| `Org_Ebene` | Geografische Reichweite der Organisation | lokal, regional, national, international |
+| `Org_Sektor` | Thematisches Wirkungsfeld der Organisation | Bildung, Gesundheit, Infrastruktur, Kultur, Landwirtschaft, Medien, Natur/Umwelt, Politik, Religion, Sport, Wirtschaft, Wissenschaft, Zivilgesellschaft |
+
+Für Personen sind `Org_Typ`, `Org_Ebene` und `Org_Sektor` mit `NA` belegt (analog dazu bei Organisationen alle personenbezogenen Variablen).
+
+# 3 Edge-List
+
+## 3.1 Variablen (alle Kanten)
+
+| Variable | Beschreibung | Ausprägungen |
+|:--|:--|:--|
+| `Source` | ID des Ausgangsknotens | Text |
+| `Target` | ID des Zielknotens | Text |
+| `Rolle` | Funktion der Person in der Organisation oder Art der Personenbeziehung | Gründer/in, Leitung/Geschäftsführung, Vorstand/Präsidium, Mitglied, Beschäftigt/tätig, Botschafter/in, Aufsichtsrat, Dozent/in, Kuratorium, Trainer, personell, institutionell |
+| `Beziehungstyp` | Strukturelle Art der Kante | Person-Organisation, Person-Person |
+| `Gewicht` | Stärke und Belegbarkeit der Verbindung | 1, 2, 3, 4 (siehe Gewichtungsschema) |
+
+## 3.2 Gewichtungsschema
+
+| Gewicht | Bedeutung | Beispiel |
+|:-:|:--|:--|
+| 4 | Beziehung zwischen Personen, nur bei eindeutiger Belegbarkeit | Eheleute, Gründer-Duo |
+| 3 | Gründer/in, Geschäftsführung, Inhaber/in | Barth → Agapedia |
+| 2 | Vorstand, Aufsichtsrat, Präsidium | Gönner → VfB |
+| 1 | Mitglied, Botschafter/in, assoziiert | Vogel → Uni Tübingen |
